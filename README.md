@@ -1,2 +1,2 @@
 # wikk_tides
-Scrape NIWA web site for Karekare tide table
+Scrape NiWA web site for Karekare beach's tide data. 

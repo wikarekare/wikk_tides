@@ -27,7 +27,7 @@ class TideQuery
                                   "lat"=>"-36.99&", 
                                   "long"=>"174.4869444",
                                   "numberOfDays"=>"2",
-                                  "startDate"=>@time.strftime("%Y-%m-%d"), #Request one days results 
+                                  "startDate"=>@time.strftime("%Y-%m-%d"), #Request todays and tomorrows tides 
                                   "datum"=>"MSL"
                                 },
                               extra_headers: { "x-apikey"=> NIWA_API_KEY }

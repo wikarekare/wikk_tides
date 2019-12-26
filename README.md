@@ -1,2 +1,2 @@
 # wikk_tides
-Scrape NiWA web site for Karekare beach's tide data. 
+Use NiWA API to obtain tides (see https://developer.niwa.co.nz/) 

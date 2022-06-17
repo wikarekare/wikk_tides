@@ -3,8 +3,9 @@ require 'time'
 require 'json'
 RLIB = '../../rlib'
 require_relative "#{RLIB}/wikk_conf.rb"
-require_relative "#{RLIB}/webbrowser.rb"
+require 'wikk_webbrowser'
 
+# Get Tide Data via NIWA's API
 class TideQuery
   attr_reader :response
   attr_reader :time
@@ -20,12 +21,12 @@ class TideQuery
     @tomorrow = (@time + LONG_DAY).strftime('%Y-%m-%d')
 
     @niwa_conf = JSON.parse(File.read(NIWA_API_KEY))
-    WebBrowser.https_session(host: 'api.niwa.co.nz', verify_cert: false ) do |ws|
+    WIKK::WebBrowser.https_session(host: 'api.niwa.co.nz', verify_cert: false ) do |ws|
       # https://api.niwa.co.nz/tides/data?lat=-36.99&long=174.4869444&numberOfDays=2&startDate=2019-12-26&apikey=xxxxxxxxx
       response = ws.get_page(query: 'tides/data',
                              form_values: {
-                               'lat' => '-36.99&',
-                               'long' => '174.4869444',
+                               'lat' => '-36.98939250332647',
+                               'long' => '174.47079642531136',
                                'numberOfDays' => '2',
                                'startDate' => @time.strftime('%Y-%m-%d'), # Request todays and tomorrows tides
                                'datum' => 'MSL'
@@ -111,7 +112,7 @@ def run
 
     # Replace current tides file, with new one.
     File.rename("#{TMP_DIR}/tides.html", "#{WWW_DIR}/weather/tides.html")
-  rescue Exception => e
+  rescue StandardError => e
     puts e
   end
 end

@@ -68,7 +68,7 @@ def run
     # Create a new tides.html file in tmp directory to ensure we don't break the current one.
     File.open("#{TMP_DIR}/tides.html", 'w') do |fd|
       # Html Header + start of body
-      fd.print <<~EOF
+      fd.print <<~HTML
         <html>
         <head><title>Karekare Tides</title>
           <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
@@ -83,23 +83,36 @@ def run
             <th>Height</th>
             <th>#{high_low.tomorrow}</th>
             <th>Height</th></tr>
-      EOF
+      HTML
       # Table Body, with tide heights
       high_low.results do |today, tomorrow|
         if today.nil?
-          fd.print "  <tr>\n    <td>&nbsp;</td><td>&nbsp;</td>\n"
+          fd.print <<~HTML
+            <tr>
+              <td>&nbsp;</td><td>&nbsp;</td>
+          HTML
         else
-          fd.print "  <tr>\n    <td>#{today[0]}</td><td align=\"right\">#{today[1]}m</td>\n"
+          fd.print <<~HTML
+            <tr>
+              <td>#{today[0]}</td><td align=\"right\">#{today[1]}m</td>
+          HTML
         end
         if tomorrow.nil?
-          fd.print "    <td>&nbsp;</td><td>&nbsp;</td>\n  </tr>\n"
+          fd.print <<~HTML
+              <td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+          HTML
+
         else
-          fd.print "    <td>#{tomorrow[0]}</td><td align=\"right\">#{tomorrow[1]}m</td>\n  </tr>\n"
+          fd.print <<~HTML
+              <td>#{tomorrow[0]}</td><td align=\"right\">#{tomorrow[1]}m</td>
+            </tr>
+          HTML
         end
       end
 
       # Rest of html file
-      fd.print <<~EOF
+      fd.print <<~HTML
           </table>
           <span style="font-size: x-small">
           Data from the <a href=\"http://www.niwa.co.nz/our-services/online-services/tides\" target=\"_blank\"> National Institute of Water & Atmospheric Research</a><br>
@@ -107,7 +120,7 @@ def run
           </span><br>
           </body>
         </html>
-      EOF
+      HTML
     end
 
     # Replace current tides file, with new one.

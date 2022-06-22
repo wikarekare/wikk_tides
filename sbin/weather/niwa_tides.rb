@@ -1,9 +1,10 @@
 #!/usr/local/bin/ruby
 require 'time'
 require 'json'
-RLIB = '../../rlib'
-require_relative "#{RLIB}/wikk_conf.rb"
 require 'wikk_webbrowser'
+
+RLIB = '/wikk/rlib'
+require_relative "#{RLIB}/wikk_conf.rb"
 
 # Get Tide Data via NIWA's API
 class TideQuery

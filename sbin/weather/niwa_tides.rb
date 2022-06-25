@@ -32,7 +32,7 @@ class TideQuery
                                'startDate' => @time.strftime('%Y-%m-%d'), # Request todays and tomorrows tides
                                'datum' => 'MSL'
                              },
-                             extra_headers: { 'x-apikey' => @niwa_conf.api_key }
+                             extra_headers: { 'x-apikey' => @niwa_conf['api_key'] }
                             )
       @response = JSON.parse(response)
     end

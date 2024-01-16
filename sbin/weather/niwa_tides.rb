@@ -116,7 +116,7 @@ def run
       fd.print <<~HTML
           </table>
           <span style="font-size: x-small">
-          Data from the <a href="http://www.niwa.co.nz/our-services/online-services/tides" target="_blank"> National Institute of Water & Atmospheric Research</a><br>
+          Data from the <a href="https://www.niwa.co.nz/our-services/online-services/tides" target="_blank"> National Institute of Water & Atmospheric Research</a><br>
           Tide heights are given in metres above and below the mean sea level.
           </span><br>
           </body>

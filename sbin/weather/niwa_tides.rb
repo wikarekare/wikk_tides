@@ -3,8 +3,9 @@ require 'time'
 require 'json'
 require 'wikk_webbrowser'
 
-RLIB = '/wikk/rlib' unless defined? RLIB
-require_relative "#{RLIB}/wikk_conf.rb"
+unless defined? WIKK_CONF
+  load '/wikk/etc/wikk.conf'
+end
 
 # Get Tide Data via NIWA's API
 class TideQuery

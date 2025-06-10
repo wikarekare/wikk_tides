@@ -3,9 +3,7 @@ require 'time'
 require 'json'
 require 'wikk_webbrowser'
 
-unless defined? WIKK_CONF
-  load '/wikk/etc/wikk.conf'
-end
+load '/wikk/etc/wikk.conf' unless defined? WIKK_CONF
 
 # Get Tide Data via NIWA's API
 class TideQuery

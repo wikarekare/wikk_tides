@@ -49,9 +49,9 @@ class TideQuery
     @response['values'].each do |h|
       time = Time.parse(h['time']).localtime
       if time.strftime('%Y-%m-%d') == @today
-        today << [ to_am_pm(time: time), h['value']]
+        today << [ to_am_pm(time: time), h['value'] ]
       else
-        tomorrow << [ to_am_pm(time: time), h['value']]
+        tomorrow << [ to_am_pm(time: time), h['value'] ]
       end
     end
 
